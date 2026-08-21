@@ -2,8 +2,8 @@
 function Header() {
   return (
     <header className="App-header">
-      <h1>📚 Biblioteca Virtual</h1>
-      <p>Empreste, devolva e organize suas leituras</p>
+      <h1>📚 Loja de Eletrônicos</h1>
+      <p>Encontre os melhores produtos eletrônicos para você</p>
     </header>
   );
 }

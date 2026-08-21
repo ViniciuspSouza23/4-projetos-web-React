@@ -4,7 +4,7 @@ import App from './App';
 test('renders the virtual library heading', () => {
   render(<App />);
   const headingElement = screen.getByRole('heading', {
-    name: /biblioteca virtual/i,
+    name: /loja de eletrônicos/i,
   });
   expect(headingElement).toBeInTheDocument();
 });

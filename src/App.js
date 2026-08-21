@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import './App.css';
 import Header from './Header';
-import ProductList from './ProductList';
+import ProductList from './Product.List';
 import Cart from './Cart';
 import Footer from './Footer';
 

@@ -1,4 +1,6 @@
-// src/Cart.js
+// src/Cart.js (atualizado — importa e usa o Payment)
+import Payment from './Payment';
+
 const FREE_SHIPPING_MIN = 300;
 
 function Cart({ items, onIncrease, onDecrease, onRemove }) {
@@ -45,6 +47,8 @@ function Cart({ items, onIncrease, onDecrease, onRemove }) {
           </div>
 
           <p className="total">Total: R$ {total.toFixed(2)}</p>
+
+          <Payment total={total} disabled={items.length === 0} />
         </>
       )}
     </div>
