@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the virtual library heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const headingElement = screen.getByRole('heading', {
+    name: /biblioteca virtual/i,
+  });
+  expect(headingElement).toBeInTheDocument();
 });
