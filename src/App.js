@@ -1,9 +1,10 @@
-// src/App.js (atualizado)
+// src/App.js (final)
 import { useState } from 'react';
 import './App.css';
 import Header from './Header';
 import ProductList from './ProductList';
 import Cart from './Cart';
+import Footer from './Footer';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +24,7 @@ function App() {
         <ProductList onAdd={handleAdd} />
         <Cart items={cartItems} onRemove={handleRemove} />
       </div>
+      <Footer />
     </div>
   );
 }
