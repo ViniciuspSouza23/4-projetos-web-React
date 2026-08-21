@@ -5,7 +5,7 @@
 
 .App {
   min-height: 100vh;
-  background: #0f172a;
+  background: linear-gradient(180deg, #0b1120 0%, #0f172a 100%);
   color: #e2e8f0;
   font-family: 'Segoe UI', sans-serif;
   padding: 30px 20px;
@@ -18,7 +18,11 @@
 
 .App-header h1 {
   margin-bottom: 4px;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .App-header p {
@@ -28,31 +32,110 @@
 .content {
   display: flex;
   gap: 24px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: flex-start;
   flex-wrap: wrap;
+}
+
+.product-section {
+  flex: 2;
+  min-width: 300px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.category-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.category-btn:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.category-btn.active {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+  font-weight: bold;
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
-  flex: 2;
+}
+
+.no-results {
+  color: #64748b;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px;
 }
 
 .product-card {
+  position: relative;
   background: #1e293b;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #334155;
+  color: #94a3b8;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
 }
 
 .product-emoji {
   font-size: 2.5rem;
   display: block;
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
 .product-card h3 {
@@ -68,13 +151,14 @@
 
 .product-card button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   background: #38bdf8;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   color: #0f172a;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 .product-card button:hover {
@@ -83,15 +167,17 @@
 
 .cart {
   flex: 1;
-  min-width: 260px;
+  min-width: 280px;
   background: #1e293b;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 20px;
 }
 
 .cart h2 {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-size: 1.2rem;
 }
 
@@ -107,24 +193,62 @@
 
 .cart li {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
   border-bottom: 1px solid #334155;
   font-size: 0.9rem;
 }
 
-.remove {
-  background: none;
-  border: none;
-  color: #f87171;
+.item-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.unit-price {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-controls button {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
   cursor: pointer;
+}
+
+.qty-controls button:hover {
+  border-color: #38bdf8;
+}
+
+.remove {
+  margin-left: auto;
+  background: none !important;
+  border: none !important;
+  color: #f87171;
   font-size: 1rem;
 }
 
 .total {
-  margin-top: 12px;
+  margin-top: 16px;
   font-weight: bold;
   color: #38bdf8;
   text-align: right;
+  font-size: 1.1rem;
+}
+
+.App-footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #64748b;
+  font-size: 0.85rem;
 }
