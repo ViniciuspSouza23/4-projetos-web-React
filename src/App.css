@@ -280,3 +280,78 @@
   color: #4ade80;
   font-weight: bold;
 }
+/* adicionar em src/App.css */
+.payment {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #334155;
+}
+
+.payment h3 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.payment-option:hover {
+  border-color: #38bdf8;
+}
+
+.payment-option.selected {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.payment-option input {
+  accent-color: #38bdf8;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #4ade80;
+  border: none;
+  border-radius: 8px;
+  color: #0f172a;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkout-btn:hover {
+  background: #22c55e;
+}
+
+.checkout-btn:disabled {
+  background: #334155;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.confirmation {
+  margin-top: 12px;
+  text-align: center;
+  color: #4ade80;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
