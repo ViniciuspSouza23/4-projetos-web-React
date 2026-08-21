@@ -1,7 +1,11 @@
 // src/Cart.js
+const FREE_SHIPPING_MIN = 300;
+
 function Cart({ items, onIncrease, onDecrease, onRemove }) {
   const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
   const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
+  const missingForFreeShipping = FREE_SHIPPING_MIN - total;
+  const progress = Math.min((total / FREE_SHIPPING_MIN) * 100, 100);
 
   return (
     <div className="cart">
@@ -26,6 +30,20 @@ function Cart({ items, onIncrease, onDecrease, onRemove }) {
               </li>
             ))}
           </ul>
+
+          <div className="shipping-bar">
+            <div className="shipping-track">
+              <div className="shipping-fill" style={{ width: `${progress}%` }} />
+            </div>
+            {missingForFreeShipping > 0 ? (
+              <p className="shipping-msg">
+                Faltam R$ {missingForFreeShipping.toFixed(2)} para frete grátis
+              </p>
+            ) : (
+              <p className="shipping-msg free">🎉 Você ganhou frete grátis!</p>
+            )}
+          </div>
+
           <p className="total">Total: R$ {total.toFixed(2)}</p>
         </>
       )}
