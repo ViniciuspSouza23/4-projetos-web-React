@@ -1,4 +1,4 @@
-// src/ProductList.js
+// src/ProductList.js (atualizado)
 const products = [
   { id: 1, name: 'Fone Bluetooth', price: 149.9, emoji: '🎧' },
   { id: 2, name: 'Smartwatch', price: 399.9, emoji: '⌚' },
@@ -8,7 +8,7 @@ const products = [
   { id: 6, name: 'Carregador Portátil', price: 89.9, emoji: '🔋' },
 ];
 
-function ProductList() {
+function ProductList({ onAdd }) {
   return (
     <div className="product-grid">
       {products.map((product) => (
@@ -16,7 +16,7 @@ function ProductList() {
           <span className="product-emoji">{product.emoji}</span>
           <h3>{product.name}</h3>
           <p className="price">R$ {product.price.toFixed(2)}</p>
-          <button>Adicionar ao carrinho</button>
+          <button onClick={() => onAdd(product)}>Adicionar ao carrinho</button>
         </div>
       ))}
     </div>
